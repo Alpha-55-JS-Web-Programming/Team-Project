@@ -1,7 +1,11 @@
-import { CONTAINER_SELECTOR, HOME } from '../common/constants.js';
+import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME } from '../common/constants.js';
+import {loadSingleMovie } from '../requests/request-service.js';
+import { toAboutView } from '../views/about-view.js';
+import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
-import { toMoviesFromCategoryView } from '../views/movie-views.js';
 import { q, setActiveNav } from './helpers.js';
+import { getFavorites } from '../data/favorites.js';
+import {getTrendingUrl} from '../common/constants.js'
 import {getTrendingUrl} from '../common/constants.js'
 
 
@@ -16,13 +20,20 @@ export const loadPage = (page = '') => {
       case TRENDING:
       setActiveNav(TRENDING);
       return renderTrending();
-      // missing partial implementation
 
+      case FAVORITES:
+      setActiveNav(FAVORITES);
+      return renderFavorites();
+
+      case ABOUT:
+      setActiveNav(ABOUT);
+      return renderAbout();
+
+      // missing partial implementation
     default: return null;
   }
 
 };
-
 
 
 const renderTrending = async() => {
@@ -30,10 +41,7 @@ const renderTrending = async() => {
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trending);
 };
 
-
 //request service
-import {getTrendingUrl} from '../common/constants.js'
-
 export const loadTrending = async() => {
   const response = await fetch(getTrendingUrl(25,0))
   const result = await response.json()
@@ -41,17 +49,19 @@ export const loadTrending = async() => {
 };
 
 q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trending);
-// private functions
 
+// private functions
 const renderHome = () => {
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
 
-
 const renderFavorites = () => {
-  // missing implementation
+  const favorites = getFavorites();
+  const movies = favorites.map(id => loadSingleMovie(id));
+
+  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(movies);
 };
 
 const renderAbout = () => {
-  // missing implementation
+  q(CONTAINER_SELECTOR).innerHTML = toAboutView();
 };
