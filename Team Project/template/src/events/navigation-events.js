@@ -2,8 +2,9 @@ import { CONTAINER_SELECTOR, HOME } from '../common/constants.js';
 import { toHomeView } from '../views/home-view.js';
 import { toMoviesFromCategoryView } from '../views/movie-views.js';
 import { q, setActiveNav } from './helpers.js';
+import {getTrendingUrl} from '../common/constants.js'
 
-// public API
+
 export const loadPage = (page = '') => {
 
   switch (page) {
@@ -12,33 +13,40 @@ export const loadPage = (page = '') => {
       setActiveNav(HOME);
       return renderHome();
 
+      case TRENDING:
+      setActiveNav(TRENDING);
+      return renderTrending();
       // missing partial implementation
 
-    /* if the app supports error logging, use default to log mapping errors */
     default: return null;
   }
 
 };
 
-export const renderMovieDetails = (id = null) => {
-  // missing implementation
+
+
+const renderTrending = async() => {
+  const trending = await loadTrending();
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trending);
 };
 
-export const renderCategory = (categoryId = null) => {
-  // missing partial implementation
 
-  q(CONTAINER_SELECTOR).innerHTML = toMoviesFromCategoryView(category, movies);
+//request service
+import {getTrendingUrl} from '../common/constants.js'
+
+export const loadTrending = async() => {
+  const response = await fetch(getTrendingUrl(25,0))
+  const result = await response.json()
+  return result.data
 };
 
+q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trending);
 // private functions
 
 const renderHome = () => {
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
 
-const renderCategories = () => {
-  // missing implementation
-};
 
 const renderFavorites = () => {
   // missing implementation
