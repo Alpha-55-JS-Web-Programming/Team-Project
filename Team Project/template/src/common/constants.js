@@ -11,3 +11,5 @@ export const FULL_HEART = '❤';
 export const EMPTY_HEART = '♡';
 
 export const ABOUT = 'about';
+
+export const trendingUrl = '';
