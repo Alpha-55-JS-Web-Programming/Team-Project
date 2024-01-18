@@ -7,7 +7,7 @@ import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
 import {getTrendingUrl} from '../common/constants.js'
 import {getTrendingUrl} from '../common/constants.js'
-
+import { toTrendingView } from '../views/trending-view.js';
 
 export const loadPage = (page = '') => {
 

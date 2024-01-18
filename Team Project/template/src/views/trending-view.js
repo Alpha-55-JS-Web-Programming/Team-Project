@@ -1,12 +1,16 @@
-export const toCategoriesView = (categories) => `
-<div id="categories">
-  <h1>Categories</h1>
+export const toTrendingView = (trending) => `
+<div id="trending">
+  <h1>Trending</h1>
   <div class="content">
-    ${categories.map(toSingleCategoryView).join('\n')}
+    ${trending.map(toSingleTrendingView).join('\n')}
   </div>
 </div>
 `;
 
-const toSingleCategoryView = (category) => `
-<!-- your template here -->
+const toSingleTrendingView = (trending) => `
+<div class="trending">
+  <h1>${trending.name}</h1>
+  <p>${trending.moviesCount} movies</p>
+  <button class="view-trending-btn" data-trending-id="${trending.id}">View trending</button>
+</div>
 `;
