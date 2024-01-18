@@ -1,12 +1,12 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME } from '../common/constants.js';
-import {loadSingleMovie } from '../requests/request-service.js';
+import { loadSingleMovie } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
-import {getTrendingUrl} from '../common/constants.js'
-import {getTrendingUrl} from '../common/constants.js'
+import { getTrendingUrl } from '../common/constants.js'
+import { getTrendingUrl } from '../common/constants.js'
 import { toTrendingView } from '../views/trending-view.js';
 
 export const loadPage = (page = '') => {
@@ -17,33 +17,33 @@ export const loadPage = (page = '') => {
       setActiveNav(HOME);
       return renderHome();
 
-      case TRENDING:
+    case TRENDING:
       setActiveNav(TRENDING);
       return renderTrending();
 
-      case FAVORITES:
+    case FAVORITES:
       setActiveNav(FAVORITES);
       return renderFavorites();
 
-      case ABOUT:
+    case ABOUT:
       setActiveNav(ABOUT);
       return renderAbout();
 
-      // missing partial implementation
+    // missing partial implementation
     default: return null;
   }
 
 };
 
 
-const renderTrending = async() => {
+const renderTrending = async () => {
   const trending = await loadTrending();
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trending);
 };
 
 //request service
-export const loadTrending = async() => {
-  const response = await fetch(getTrendingUrl(25,0))
+export const loadTrending = async () => {
+  const response = await fetch(getTrendingUrl(25, 0))
   const result = await response.json()
   return result.data
 };
