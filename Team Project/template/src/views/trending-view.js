@@ -1,33 +1,36 @@
 /**
- *
- * @param {Array <
- * id:string,
- * rating: string,
- * title: string,
- * images: {
- *  fixed_width:{
- *    url: string;
- *   },
- *  },
- * user: {
- * avatar_url: string,
- * },
- * }>} trending
- * @returns
- */
-export const toTrendingView = (trending) => `
-<div id="trending">
-  <h1>Trending</h1>
-  <div class="content">
-    ${trending.map(toSingleTrendingView).join("\n")}
-  </div>
-</div>
-`;
+*
+* @param {Array<{
+  * id: string,
+  * rating: string,
+  * title: string,
+  * images: {
+  *  fixed_width: {
+  *   url: string,
+  *  },
+  * },
+  * user: {
+  *  avatar_url: string,
+  *  username: string,
+  * },
+  * }>} trendingGifs
+  */
 
-const toSingleTrendingView = (trending) => `
-<div class="trending">
-  <h1>${trending.name}</h1>
-  <p>${trending.moviesCount} movies</p>
-  <button class="view-trending-btn" data-trending-id="${trending.id}">View trending</button>
-</div>
-`;
+export const toTrendingView = (trendingGifs) => {
+  return `
+      <section class="trending">
+        <h2>Trending</h2>
+        <ul>
+          ${trendingGifs.map(toTrendingItemView).join('')}
+        </ul>
+      </section>
+    `;
+};
+
+const toTrendingItemView = (trendingItem) => `
+    <li>
+      <a href="#/trending/${trendingItem.id}">
+        <img src="${trendingItem.images.fixed_width.url}" alt="${trendingItem.title}">
+      </a>
+    </li>
+  `;
