@@ -1,8 +1,25 @@
+/**
+ *
+ * @param {Array <
+ * id:string,
+ * rating: string,
+ * title: string,
+ * images: {
+ *  fixed_width:{
+ *    url: string;
+ *   },
+ *  },
+ * user: {
+ * avatar_url: string,
+ * },
+ * }>} trending
+ * @returns
+ */
 export const toTrendingView = (trending) => `
 <div id="trending">
   <h1>Trending</h1>
   <div class="content">
-    ${trending.map(toSingleTrendingView).join('\n')}
+    ${trending.map(toSingleTrendingView).join("\n")}
   </div>
 </div>
 `;
