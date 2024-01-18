@@ -5,7 +5,14 @@ export  const displayGifDetails = async (event, trendingItem) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const newDiv = document.createElement('div');
-  newDiv.innerHTML = `Gif name: ${trendingItem.title}`;
+  const info = `
+      <div class="gif-info">
+        <h2>${trendingItem.title}</h2>
+        <p>Rating: ${trendingItem.rating}</p>
+        <p>Import Date: ${trendingItem.import_datetime}</p>
+      </div>
+    `;
+  newDiv.innerHTML = info;
   currentElement.appendChild(newDiv);
 };
 /**

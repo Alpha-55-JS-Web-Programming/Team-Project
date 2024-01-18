@@ -53,7 +53,8 @@ const renderTrending = async () => {
 export const viewGifDetails = async (getTrendingUrl) => {
 // console.log(event);
 // console.log(event.target);
-
+// 1 . await GET GIF ID
+// 2. q(CONTAINER_SELECTOR).innerHTML = displayGifInfo(GET GIF ID);
   try {
     const response = await fetch(getTrendingUrl);
     console.log(response);
