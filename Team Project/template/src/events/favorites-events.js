@@ -2,25 +2,25 @@ import { EMPTY_HEART, FULL_HEART } from '../common/constants.js';
 import { addFavorite, getFavorites, removeFavorite } from '../data/favorites.js';
 import { q } from './helpers.js';
 
-export const toggleFavoriteStatus = (movieId) => {
+export const toggleFavoriteStatus = (GifId) => {
   const favorites = getFavorites();
-  const heartSpan = q(`span[data-movie-id="${movieId}"]`);
+  const heartSpan = q(`span[data-movie-id="${GifId}"]`);
   
-  if (favorites.includes(movieId)) {
-    removeFavorite(movieId);
+  if (favorites.includes(GifId)) {
+    removeFavorite(GifId);
     heartSpan.classList.remove('active')
     heartSpan.innerHTML = EMPTY_HEART;
   } else {
-    addFavorite(movieId);
+    addFavorite(GifId);
     heartSpan.classList.add('active');
     heartSpan.innerHTML = FULL_HEART;
   }
 };
 
-export const renderFavoriteStatus = (movieId) => {
+export const renderFavoriteStatus = (GifId) => {
   const favorites = getFavorites();
 
-  return favorites.includes(movieId)
-    ? `<span class="favorite active" data-movie-id="${movieId}">${FULL_HEART}</span>`
-    : `<span class="favorite" data-movie-id="${movieId}">${EMPTY_HEART}</span>`;
+  return favorites.includes(GifId)
+    ? `<span class="favorite active" data-gif-id="${GifId}">${FULL_HEART}</span>`
+    : `<span class="favorite" data-gif-id="${GifId}">${EMPTY_HEART}</span>`;
 };
