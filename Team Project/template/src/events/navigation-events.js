@@ -34,20 +34,16 @@ export const loadPage = (page = '') => {
 
 };
 
-
 const renderTrending = async () => {
-  const trending = await loadTrending();
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trending);
+  const trendingGifs = await loadTrendingGifs();
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trendingGifs);
 };
 
-//request service
-export const loadTrending = async () => {
+export const loadTrendingGifs = async () => {
   const response = await fetch(getTrendingUrl(25, 0))
   const result = await response.json()
-  return result.data
+  return result.data;
 };
-
-q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trending);
 
 // private functions
 const renderHome = () => {
