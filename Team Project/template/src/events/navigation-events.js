@@ -1,11 +1,11 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING } from '../common/constants.js';
-// import { loadSingleMovie } from '../requests/request-service.js';
+import { loadTrendingGifs } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 // import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
-import { getTrendingUrl, API_KEY } from '../common/constants.js'
+import { getTrendingUrl, trendingUrl } from '../common/constants.js'
 import { toTrendingView, displayGifDetails } from '../views/trending-view.js';
 
 export const loadPage = (page = '') => {
@@ -50,24 +50,19 @@ const renderTrending = async () => {
 //   currentElement.appendChild(newDiv);
 // };
 
-export const viewGifDetails = async (gifId) => {
+export const viewGifDetails = async (getTrendingUrl) => {
+// console.log(event);
+// console.log(event.target);
 
   try {
     const response = await fetch(getTrendingUrl);
+    console.log(response);
     const res = await response.json();
+    console.log(res.data);
     displayGifDetails(res.data); // Implement this function to update the UI with the details
   } catch (error) {
     console.error('Error fetching GIF details:', error);
   }
-};
-
-
-
-
-export const loadTrendingGifs = async () => {
-  const response = await fetch(getTrendingUrl(25, 0))
-  const result = await response.json()
-  return result.data;
 };
 
 // private functions
