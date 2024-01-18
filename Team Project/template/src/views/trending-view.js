@@ -1,3 +1,13 @@
+export  const displayGifDetails = async (event, trendingItem) => {
+  const currentElement = event.currentTarget;
+
+  // Simulating an asynchronous operation (remove this in your actual code)
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const newDiv = document.createElement('div');
+  newDiv.innerHTML = `Gif name: ${trendingItem.title}`;
+  currentElement.appendChild(newDiv);
+};
 /**
 *
 * @param {Array<{
@@ -31,6 +41,7 @@ const toTrendingItemView = (trendingItem) => `
     <li>
       <a href="#/trending/${trendingItem.id}">
         <img src="${trendingItem.images.fixed_width.url}" alt="${trendingItem.title}">
+        <button class="view-gif-details"  data-view-gif-details=${trendingItem.id} >View Gif Details</button>
       </a>
     </li>
   `;
