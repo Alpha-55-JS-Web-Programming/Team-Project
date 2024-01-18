@@ -1,12 +1,12 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING } from '../common/constants.js';
-import { loadSingleMovie } from '../requests/request-service.js';
+// import { loadSingleMovie } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
-import { getTrendingUrl } from '../common/constants.js'
 import { toTrendingView } from '../views/trending-view.js';
+import { loadTrendingGifs } from '../requests/request-service.js';
 
 export const loadPage = (page = '') => {
 
@@ -39,12 +39,6 @@ const renderTrending = async () => {
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trendingGifs);
 };
 
-export const loadTrendingGifs = async () => {
-  const response = await fetch(getTrendingUrl(25, 0))
-  const result = await response.json()
-  return result.data;
-};
-
 // private functions
 const renderHome = () => {
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
@@ -52,7 +46,7 @@ const renderHome = () => {
 
 const renderFavorites = () => {
   const favorites = getFavorites();
-  const movies = favorites.map(id => loadSingleMovie(id));
+  const movies = favorites.map(id => loadTrendingGifs(id)); // change
 
   q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(movies);
 };
