@@ -6,36 +6,36 @@ import { renderSearchItems } from './events/search-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // add global listener
-  document.addEventListener('click', event => {
+// add global listener
+document.addEventListener('click', event => {
 
-    // nav events
-    if (event.target.classList.contains('nav-link')) {
-      loadPage(event.target.getAttribute('data-page'));
-    }
+// nav events
+if (event.target.classList.contains('nav-link')) {
+loadPage(event.target.getAttribute('data-page'));
+}
 
-    // show trending events
-    if (event.target.classList.contains('trending-link')) { // change
-      renderTrending(+event.target.getAttribute('data-trending')); // change
-    }
+// show trending events
+if (event.target.classList.contains('trending-link')) { // change
+renderTrending(+event.target.getAttribute('data-trending')); // change
+}
 
-    // show movie events
-    if (event.target.classList.contains('movie-link')) {
-      renderMovieDetails(+event.target.getAttribute('data-movie'));
-    }
+// show movie events
+if (event.target.classList.contains('movie-link')) {
+renderMovieDetails(+event.target.getAttribute('data-movie'));
+}
 
-    // toggle favorite event
-    if (event.target.classList.contains('favorite')) {
-      toggleFavoriteStatus(+event.target.getAttribute('data-movie-id'));
-    }
+// toggle favorite event
+if (event.target.classList.contains('favorite')) {
+toggleFavoriteStatus(+event.target.getAttribute('data-movie-id'));
+}
 
-  });
+});
 
-  // search events
-  q('input#search').addEventListener('input', event => {
-    renderSearchItems(event.target.value);
-  });
+// search events
+q('input#search').addEventListener('input', event => {
+renderSearchItems(event.target.value);
+});
 
-  loadPage(HOME);
+loadPage(HOME);
 
 });
