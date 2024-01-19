@@ -100,6 +100,19 @@ span.favorite:hover {
 
 /* End template styling */
 
+#about {
+  padding: 50px;
+}
 
+#about h1 {
+  text-align: center;
+}
+
+#about div.content {
+  max-width: 500px;
+  margin: 50px auto;
+  font-size: 1.2em;
+  text-align: center;
+}
 
 /* Add your styles below */
