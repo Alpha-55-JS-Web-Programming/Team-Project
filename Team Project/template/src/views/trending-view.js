@@ -44,7 +44,7 @@ export const toTrendingView = (trendingGifs) => {
     `;
 };
 
-const toTrendingItemView = (trendingItem) => `
+export const toTrendingItemView = (trendingItem) => `
     <li>
       <a href="#/trending/${trendingItem.id}">
         <img src="${trendingItem.images.fixed_width.url}" alt="${trendingItem.title}">
