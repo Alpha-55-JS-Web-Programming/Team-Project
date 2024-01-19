@@ -1,13 +1,13 @@
 export const toHomeView = () => `
 <div id="home">
-  <h1>Mov(e)ster</h1>
+  <h1>Giphy</h1>
   <div class="content">
-    <p>Simple movie database app. You can:</p>
+    <p>Simple gif database app. You can:</p>
     <ul>
-      <li>Browse categories</li>
-      <li>Browse movies</li>
-      <li>Add and remove movies from favorites</li>
-      <li>Search for movies by title</li>
+      <li>Browse trending gifs</li>
+      <li>Upload gifs</li>
+      <li>Add and remove gifs from favorites</li>
+      <li>Search for gifs by title</li>
     </ul>
   </div>
 </div>
