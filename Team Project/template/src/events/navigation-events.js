@@ -1,12 +1,13 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING } from '../common/constants.js';
-import { loadTrendingGifs } from '../requests/request-service.js';
+import { loadTrendingGifs, loadSingleGif } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 // import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
-import { getTrendingUrl, trendingUrl } from '../common/constants.js'
+// import { getTrendingUrl, trendingUrl } from '../common/constants.js'
 import { toTrendingView, displayGifDetails } from '../views/trending-view.js';
+import { toFavoritesView } from '../views/favorites-view.js';
 
 export const loadPage = (page = '') => {
 
@@ -73,10 +74,10 @@ const renderHome = () => {
 
 const renderFavorites = () => {
   const favorites = getFavorites();
-  const movies = favorites.map(id => loadSingleMovie(id));
-
-  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(movies);
+  Promise.all(favorites.map(id => loadSingleGif(id)))
+    .then(movies => q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(movies));
 };
+
 
 const renderAbout = () => {
   q(CONTAINER_SELECTOR).innerHTML = toAboutView();

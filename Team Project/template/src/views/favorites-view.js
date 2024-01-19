@@ -1,10 +1,10 @@
-// import { toMovieSimple } from './movie-views.js';
+import { loadSingleGif } from "../requests/request-service.js";
 
-export const toFavoritesView = (movies) => `
+export const toFavoritesView = (gifs) => `
 <div id="movies">
   <h1>Favorite movies:</h1>
   <div class="content">
-    ${movies.map(toMovieSimple).join('\n') || '<p>Add some movies to favorites to see them here.</p>'}
+    ${gifs.find(loadSingleGif)|| '<p>Add some movies to favorites to see them here.</p>'}
   </div>
 </div>
 `;
