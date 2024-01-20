@@ -5,7 +5,6 @@ import { toAboutView } from '../views/about-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
-// import { getTrendingUrl, trendingUrl } from '../common/constants.js'
 import { toTrendingView, displayGifDetails } from '../views/trending-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 
@@ -51,13 +50,13 @@ const renderTrending = async () => {
 //   currentElement.appendChild(newDiv);
 // };
 
-export const viewGifDetails = async (getTrendingUrl) => {
+export const viewGifDetails = async (trendingUrl) => {
 // console.log(event);
 // console.log(event.target);
 // 1 . await GET GIF ID
 // 2. q(CONTAINER_SELECTOR).innerHTML = displayGifDetails(GET GIF ID);
   try {
-    const response = await fetch(getTrendingUrl);
+    const response = await fetch(trendingUrl);
     console.log(response);
     const res = await response.json();
     console.log(res.data);

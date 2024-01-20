@@ -1,5 +1,6 @@
 // import { getCategories, getMoviesGeneralInfo, getMovieById, getCategory, searchMovies } from '../data/movies.js';
-import { getTrendingUrl } from '../common/constants.js'
+
+import { API_KEY } from "../common/constants.js";
 
 /**
 *
@@ -19,7 +20,7 @@ import { getTrendingUrl } from '../common/constants.js'
   * }>>} - array of trending gifs
   */
 export const loadTrendingGifs = async () => {
-  const response = await fetch(getTrendingUrl(30));
+  const response = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=${30}&offset=0&rating=g`);
   const result = await response.json();
 
   return result.data
