@@ -14,14 +14,9 @@ if (event.target.classList.contains('nav-link')) {
 loadPage(event.target.getAttribute('data-page'));
 }
 
-// show trending events
-if (event.target.classList.contains('trending-link')) { // change
-renderTrending(+event.target.getAttribute('data-trending')); // change
-}
-
 // show movie events
-if (event.target.classList.contains('view-gif-details')) {
-    viewGifDetails(+event.target.getAttribute('data-view-gif-details'));
+if (event.target.classList.contains('view-gif-details-button')) {
+    viewGifDetails(event.target.getAttribute('data-gif-id'));
 }
 
 // toggle favorite event
