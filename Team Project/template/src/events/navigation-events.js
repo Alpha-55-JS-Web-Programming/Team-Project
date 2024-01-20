@@ -94,8 +94,8 @@ export const initiateUpload = ()=>{
       const formData = new FormData();
       // This appends the file to the FormData object with the key 'image'.
       formData.append('image', file);
-      // uploading/creating formData to folder upload
-      fetch('../../upload', {
+      // uploadingformData to folder giphy
+      fetch('', {
           method: 'POST',
           body: formData,
         })
