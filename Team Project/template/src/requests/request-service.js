@@ -24,3 +24,5 @@ export const loadTrendingGifs = async () => {
 
   return result.data
 };
+
+export const loadSingleGif = () => {};
