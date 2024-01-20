@@ -81,3 +81,32 @@ const renderFavorites = () => {
 const renderAbout = () => {
   q(CONTAINER_SELECTOR).innerHTML = toAboutView();
 };
+
+// export const initiateUpload = ()=>{
+//   // getting the class attribute, because in index.js the current trigered event is the button
+//   const fileInput = document.getElementsByClassName('upload-input-file');
+//     // and getting the img file/s that is to be uploaded
+//   const file = fileInput.files;
+
+//   if (file){
+//     // creating FormData object to send key/value pairs via fetch() to a server
+//       const formData = new FormData();
+//       // This appends the file to the FormData object with the key 'image'.
+//       formData.append('image', file);
+//       // uploading/creating formData to folder upload
+//       fetch('../../upload', {
+//           method: 'POST',
+//           body: formData,
+//         })
+//         .then(response => {
+//           if (response.ok) {
+//             console.log('Successful upload')
+//             document.getElementById('status').innerHTML = 'Upload successful!';
+//           } 
+//         })
+//         .catch(error => {
+//           console.error('Error:', error);
+//           document.getElementById('status').innerHTML = `An error occurred.`;
+//         });
+//       } 
+//   }

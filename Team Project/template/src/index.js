@@ -21,9 +21,9 @@ if (event.target.classList.contains('view-gif-details-button')) {
 
 // upload
 // listening for click event from upload-view 
-if (event.target.classList.contains('upload-btn')) {
-    initiateUpload();
- }
+// if (event.target.classList.contains('upload-btn')) {
+//     initiateUpload();
+//  }
 
 // toggle favorite event
 if (event.target.classList.contains('favorite')) {
