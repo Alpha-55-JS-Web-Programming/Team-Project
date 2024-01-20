@@ -3,7 +3,7 @@ import { toggleFavoriteStatus } from './events/favorites-events.js';
 import { q } from './events/helpers.js';
 import { loadPage, viewGifDetails } from './events/navigation-events.js'; // change
 import { renderSearchItems } from './events/search-events.js';
-// import { initiateUpload  } from './events/navigation-events.js';
+import { initiateUpload  } from './events/navigation-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -22,9 +22,9 @@ if (event.target.classList.contains('view-gif-details-button')) {
 
 // upload
 // listening for click event from upload-view 
-// if (event.target.classList.contains('upload-btn')) {
-//     initiateUpload();
-//  }
+if (event.target.classList.contains('upload-btn')) {
+    initiateUpload();
+ }
 
 // toggle favorite event
 if (event.target.classList.contains('favorite')) {
