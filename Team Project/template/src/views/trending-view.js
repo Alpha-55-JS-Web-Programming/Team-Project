@@ -20,6 +20,7 @@ export const toGifDetailsView = (trendingItem) => {
         <h2>${trendingItem.title}</h2>
         <p>Rating: ${trendingItem.rating}</p>
         <p>Import Date: ${trendingItem.import_datetime}</p>
+        <p>Gif Id: ${trendingItem.id}</p>
       </div>
     `;
 };
