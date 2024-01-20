@@ -21,7 +21,7 @@ export const toGifDetailsView = (trendingItem) => {
         <p>Rating: ${trendingItem.rating}</p>
         <p>Import Date: ${trendingItem.import_datetime}</p>
         <p>Gif Id: ${trendingItem.id}</p>
-        <p>User: ${gifId.user?.username || 'Unknown'}</p>
+        <p>User: ${trendingItem.user?.username || 'Unknown'}</p>
       </div>
     `;
 };
