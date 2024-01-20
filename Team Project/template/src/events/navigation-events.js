@@ -1,4 +1,4 @@
-import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING } from '../common/constants.js';
+import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING, UPLOAD } from '../common/constants.js';
 import { loadTrendingGifs, loadSingleGif, loadGifDetails } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 // import { toFavoritesView } from '../views/favorites-view.js';
@@ -7,6 +7,7 @@ import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
 import { toTrendingView, toGifDetailsView } from '../views/trending-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
+import { toUploadView } from '../views/upload-view.js';
 
 export const loadPage = (page = '') => {
 
@@ -24,6 +25,10 @@ export const loadPage = (page = '') => {
       setActiveNav(FAVORITES);
       return renderFavorites();
 
+    case UPLOAD:
+      setActiveNav(UPLOAD);
+      return renderUpload();
+
     case ABOUT:
       setActiveNav(ABOUT);
       return renderAbout();
@@ -38,6 +43,10 @@ const renderTrending = async () => {
   const trendingGifs = await loadTrendingGifs();
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(trendingGifs);
 };
+
+const renderUpload = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadView();
+}
 
 // export const viewGifDetails = async (event, trendingItem) => {
 //   const currentElement = event.currentTarget;
