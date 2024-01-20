@@ -1,7 +1,7 @@
 import { HOME } from './common/constants.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
 import { q } from './events/helpers.js';
-import { loadPage, viewGifDetails } from './events/navigation-events.js'; // change
+import { loadPage, viewGifDetails, initiateUpload } from './events/navigation-events.js'; // change
 import { renderSearchItems } from './events/search-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,6 +18,12 @@ loadPage(event.target.getAttribute('data-page'));
 if (event.target.classList.contains('view-gif-details-button')) {
     viewGifDetails(event.target.getAttribute('data-gif-id'));
 }
+
+// upload
+// listening for click event from upload-view 
+if (event.target.classList.contains('upload-btn')) {
+    initiateUpload();
+ }
 
 // toggle favorite event
 if (event.target.classList.contains('favorite')) {
