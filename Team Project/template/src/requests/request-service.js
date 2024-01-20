@@ -34,3 +34,9 @@ export const loadGifDetails = async (gifId) => {
 
   return result.data;
 };
+export const loadSearchResults = async (searchInputValue) => {
+  const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${searchInputValue}&limit=25&offset=0&rating=g&lang=en`);
+  const result = await response.json();
+
+  return result.data;
+};
