@@ -1,8 +1,9 @@
 import { HOME } from './common/constants.js';
 import { toggleFavoriteStatus } from './events/favorites-events.js';
 import { q } from './events/helpers.js';
-import { loadPage, viewGifDetails, initiateUpload } from './events/navigation-events.js'; // change
+import { loadPage, viewGifDetails } from './events/navigation-events.js'; // change
 import { renderSearchItems } from './events/search-events.js';
+// import { initiateUpload  } from './events/navigation-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
