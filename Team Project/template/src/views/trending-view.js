@@ -1,3 +1,5 @@
+import { renderFavoriteStatus } from "../events/favorites-events.js";
+
 export const toGifDetailsView = (trendingItem) => {
   // const currentElement = event.currentTarget;
 
@@ -59,7 +61,8 @@ export const toTrendingItemView = (trendingItem) => `
     <li>
       <a href="#/trending/${trendingItem.id}">
         <img src="${trendingItem.images.fixed_width.url}" alt="${trendingItem.title}">
-        <button class="view-gif-details-button"  data-gif-id=${trendingItem.id} >View Gif Details</button>
+        <button class="view-gif-details-button"  data-gif-id=${trendingItem.id} >View Gif Details</button> 
+        ${renderFavoriteStatus(trendingItem.id)}
       </a>
     </li>
   `;
