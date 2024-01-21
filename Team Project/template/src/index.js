@@ -21,14 +21,14 @@ if (event.target.classList.contains('view-gif-details-button')) {
 }
 
 // upload
-// listening for click event from upload-view 
+// listening for click event from upload-view
 if (event.target.classList.contains('upload-btn')) {
     initiateUpload();
  }
 
 // toggle favorite event
 if (event.target.classList.contains('favorite')) {
-toggleFavoriteStatus(+event.target.getAttribute('data-movie-id'));
+toggleFavoriteStatus(event.target.getAttribute('data-gif-id'));
 }
 
 });
