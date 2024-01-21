@@ -1,5 +1,3 @@
-// import { getCategories, getMoviesGeneralInfo, getMovieById, getCategory, searchMovies } from '../data/movies.js';
-
 import { API_KEY } from "../common/constants.js";
 
 /**
@@ -48,7 +46,6 @@ export const uploadGif = async (file) => {
   // This appends the file to the FormData object with the key 'image'.
   formData.append('file', file);
   formData.append('api_key', API_KEY);
-  // uploadingformData to folder giphy
   const result = await fetch('https://upload.giphy.com/v1/gifs', {
     method: 'POST',
     body: formData,

@@ -1,4 +1,4 @@
-import { toTrendingView } from "./trending-view.js"; // changed, with row 7
+import { toTrendingView } from "./trending-view.js";
 
 export const toSearchView = (movies, searchTerm) => `
 <div id="movies">
