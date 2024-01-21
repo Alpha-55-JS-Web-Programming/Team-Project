@@ -34,19 +34,19 @@ export const toTrendingView = (trendingGifs) => {
   return `
       <section class="trending">
         <h2>Trending</h2>
-        <ul>
+        <div class="trending-gifs">
           ${trendingGifs.map(toTrendingItemView).join('')}
-        </ul>
+        </div>
       </section>
     `;
 };
 
 export const toTrendingItemView = (trendingItem) => `
-    <li>
+    <div class="grid">
       <a href="#/trending/${trendingItem.id}">
         <img src="${trendingItem.images.fixed_width.url}" alt="${trendingItem.title}">
         <button class="view-gif-details-button"  data-gif-id=${trendingItem.id} >View Gif Details</button>
         ${renderFavoriteStatus(trendingItem.id)}
       </a>
-    </li>
+    </div>
   `;

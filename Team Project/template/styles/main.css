@@ -9,6 +9,19 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.trending-gifs{
+  display: grid;
+  grid-template-columns: repeat(6, auto [col-start]);
+  grid-template-rows: auto;
+  justify-self: center;
+  column-gap: 20px;
+  row-gap: 15px;
+}
+
+.grid {
+  background-color: rgb(1, 1, 9);
+}
+
 div#app {
   display: grid;
   max-width: 1400px;
@@ -27,7 +40,7 @@ div#app {
 header {
   grid-area: header;
   height: 200px;
-  background: url('../images/banner-top.png');
+  background: url('../images/GIPHY\ Logo\ 209px.png') repeat;
 }
 
 nav {
