@@ -1,5 +1,5 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING, UPLOAD } from '../common/constants.js';
-import { loadTrendingGifs, loadSingleGif, loadGifDetails } from '../requests/request-service.js';
+import { loadTrendingGifs, loadSingleGif, loadGifDetails, uploadGif } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 // import { toFavoritesView } from '../views/favorites-view.js';
 import { toHomeView } from '../views/home-view.js';
@@ -83,31 +83,21 @@ const renderAbout = () => {
 };
 
 // experienceing alert message after tryng to upload and then tryng to reload the page
-export const initiateUpload = ()=>{
+export const initiateUpload = async () => {
   // getting the class attribute, because in index.js the current trigered event is the button
-  const fileInput = document.getElementsByClassName('upload-input-file');
-    // and getting the img file/s that is to be uploaded
-  const file = fileInput.files;
+  const fileInput = document.getElementsByClassName('upload-input-file')[0];
+  // and getting the img file/s that is to be uploaded
+  const file = fileInput.files[0];
 
-  if (file){
-    // creating FormData object to send key/value pairs via fetch() to a server
-      const formData = new FormData();
-      // This appends the file to the FormData object with the key 'image'.
-      formData.append('image', file);
-      // uploadingformData to folder giphy
-      fetch('', {
-          method: 'POST',
-          body: formData,
-        })
-        .then(response => {
-          if (response.ok) {
-            console.log('Successful upload')
-            document.getElementById('status').innerHTML = 'Upload successful!';
-          } 
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          document.getElementById('status').innerHTML = `An error occurred.`;
-        });
-      } 
+  if (file) {
+    try {
+      document.getElementById('status').innerHTML = 'The GIF is uploading...';
+      await uploadGif(file)
+      console.log('Successful upload');
+      document.getElementById('status').innerHTML = 'Upload successful!';
+    } catch (e) {
+      console.error('Error:', error);
+      document.getElementById('status').innerHTML = `An error occurred.`;
+    }
   }
+}
