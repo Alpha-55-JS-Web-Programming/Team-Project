@@ -99,14 +99,17 @@ export const displayUploadedGif = async () => {
  const getGifData = await loadGifDetails(getGifId)
  console.log(`gif data: ${getGifData.url}`)
 
+ const parsed = await getGifData.json()
+ console.log(`gif parsed data: ${parsed}`)
+
 // const gifElement = document.createElement('img');
-// gifElement.src = getGifData.url;
+// gifElement.src = parsed.url;
 // document.getElementById('status').innerHTML += gifElement;
 
-  let img = new Image();
+  const img = new Image();
   img.onload = img.src = () => {
-    imgSrc = getGifData.url; 
-} 
+    imgSrc = parsed?.data.url; 
+  }
 document.getElementById('status').appendChild(img);
 
 }
