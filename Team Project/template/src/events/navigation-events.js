@@ -1,5 +1,5 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING, UPLOAD } from '../common/constants.js';
-import { loadTrendingGifs, loadSingleGif, loadGifDetails, uploadGif } from '../requests/request-service.js';
+import { loadTrendingGifs, loadSingleGif, loadGifDetails, uploadGif, getGifUploadedId } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
@@ -81,9 +81,32 @@ export const initiateUpload = async () => {
       await uploadGif(file)
       console.log('Successful upload');
       document.getElementById('status').innerHTML = 'Upload successful!';
+      displayUploadedGif()
     } catch (e) {
-      console.error('Error:', error);
+      console.error('Error:', e);
       document.getElementById('status').innerHTML = `An error occurred.`;
     }
   }
+}
+
+export const displayUploadedGif = async () => {
+
+ const getGifId = await getGifUploadedId();
+ console.log(`Successfuly obtained gif\'s id: ${getGifId}`);
+
+//  return viewGifDetails(getGifId);
+
+ const getGifData = await loadGifDetails(getGifId)
+ console.log(`gif data: ${getGifData.url}`)
+
+// const gifElement = document.createElement('img');
+// gifElement.src = getGifData.url;
+// document.getElementById('status').innerHTML += gifElement;
+
+  let img = new Image();
+  img.onload = img.src = () => {
+    imgSrc = getGifData.url; 
+} 
+document.getElementById('status').appendChild(img);
+
 }
