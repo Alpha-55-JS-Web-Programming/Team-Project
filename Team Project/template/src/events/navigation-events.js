@@ -1,5 +1,5 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING, UPLOAD } from '../common/constants.js';
-import { loadTrendingGifs, loadSingleGif, loadGifDetails, uploadGif, getGifUploadedId } from '../requests/request-service.js';
+import { loadTrendingGifs, loadSingleGif, loadGifDetails, uploadGif, getGifUploadedId, loadRandomGif } from '../requests/request-service.js';
 import { toAboutView } from '../views/about-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
@@ -58,15 +58,22 @@ const renderHome = () => {
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
 
-const renderFavorites = async() => {
+const renderFavorites = async () => {
+
+  if (localStorage.length === 0) {
+
+    const randomGif = await loadRandomGif()
+    q(CONTAINER_SELECTOR).innerHTML = toTrendingItemView(randomGif);
+  }
+
   const favorites = await getFavorites();
   console.log("favorites from local storage: " + favorites);
-  const gif = favorites.map(id =>  loadSingleGifById(id));
+  const gif = favorites.map(id => loadSingleGifById(id));
   const gifs = await Promise.all(gif);
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
 };
-export const loadSingleGifById = async(id) => {
-  const gif =  await loadGifDetails(id);
+export const loadSingleGifById = async (id) => {
+  const gif = await loadGifDetails(id);
   return gif;
 };
 
@@ -99,16 +106,15 @@ export const displayUploadedGif = async () => {
 
   const getGifId = await getGifUploadedId();
   console.log(`Successfuly obtained gif\'s id: ${getGifId}`);
- 
+
   // return viewGifDetails(getGifId);
- 
+
   const getGifData = await loadGifDetails(getGifId)
   console.log(`gif data.url: ${getGifData.url}`)
- 
+
   const img = document.createElement("IMG");
- // const img = new Image();
- img.src = getGifData.images.fixed_width.url; 
- img.height = 200;
- img.width = 200;
- document.getElementById('status').appendChild(img);
- }
+  img.src = getGifData.images.fixed_width.url;
+  img.height = 200;
+  img.width = 200;
+  document.getElementById('status').appendChild(img);
+}
