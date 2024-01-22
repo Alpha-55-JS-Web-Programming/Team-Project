@@ -9,13 +9,11 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.trending-gifs{
+.trending-gifs {
   display: grid;
-  grid-template-columns: repeat(6, auto [col-start]);
-  grid-template-rows: auto;
-  justify-self: center;
-  column-gap: 20px;
-  row-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  justify-content: center;
 }
 
 .grid {
