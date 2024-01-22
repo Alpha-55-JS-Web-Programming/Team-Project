@@ -60,6 +60,7 @@ const renderHome = () => {
 
 const renderFavorites = () => {
   const favorites = getFavorites();
+  console.log("favorites from local storage: " + favorites);
   q(CONTAINER_SELECTOR).innerHTML = toTrendingItemView(favorites);
 };
 
