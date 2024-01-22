@@ -58,25 +58,12 @@ const renderHome = () => {
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
 
-const renderFavorites = async () => {
 
-  if (localStorage.length === 0) {
-
-    const randomGif = await loadRandomGif()
-    q(CONTAINER_SELECTOR).innerHTML = toTrendingItemView(randomGif);
-  }
-
-  const favorites = await getFavorites();
+const renderFavorites = () => {
+  const favorites = getFavorites();
   console.log("favorites from local storage: " + favorites);
-  const gif = favorites.map(id => loadSingleGifById(id));
-  const gifs = await Promise.all(gif);
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingItemView(favorites);
 };
-export const loadSingleGifById = async (id) => {
-  const gif = await loadGifDetails(id);
-  return gif;
-};
-
 
 const renderAbout = () => {
   q(CONTAINER_SELECTOR).innerHTML = toAboutView();
