@@ -91,16 +91,18 @@ export const initiateUpload = async () => {
 
 export const displayUploadedGif = async () => {
 
- const getGifId = await getGifUploadedId();
- console.log(`Successfuly obtained gif\'s id: ${getGifId}`);
-
-//  return viewGifDetails(getGifId);
-
- const getGifData = await loadGifDetails(getGifId)
- console.log(`gif data.url: ${getGifData.url}`)
-
-const img = new Image();
-img.src = getGifData.url; 
-
-document.getElementById('status').appendChild(img);
-}
+  const getGifId = await getGifUploadedId();
+  console.log(`Successfuly obtained gif\'s id: ${getGifId}`);
+ 
+ //  return viewGifDetails(getGifId);
+ 
+  const getGifData = await loadGifDetails(getGifId)
+  console.log(`gif data.url: ${getGifData.url}`)
+ 
+  const img = document.createElement("IMG");
+ // const img = new Image();
+ img.src = getGifData.images.fixed_width.url; 
+ img.height = 200;
+ img.width = 200;
+ document.getElementById('status').appendChild(img);
+ }

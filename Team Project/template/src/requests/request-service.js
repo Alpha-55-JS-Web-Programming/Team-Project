@@ -28,7 +28,7 @@ export const loadTrendingGifs = async () => {
 export const loadSingleGif = () => {};
 
 export const loadGifDetails = async (gifId) => {
-  const response = await fetch(`https://api.giphy.com/v1/gifs/${gifId}?api_key=${API_KEY}&rating=g`);
+  const response = await fetch(`https://api.giphy.com/v1/gifs/${gifId}?api_key=${API_KEY}`);
   const result = await response.json();
   console.log(`fetched gif with data :${result.data}`)
   return result.data;
