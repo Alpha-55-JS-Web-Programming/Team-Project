@@ -30,7 +30,7 @@ export const loadSingleGif = () => {};
 export const loadGifDetails = async (gifId) => {
   const response = await fetch(`https://api.giphy.com/v1/gifs/${gifId}?api_key=${API_KEY}&rating=g`);
   const result = await response.json();
-
+  console.log(`fetched gif with data :${result.data}`)
   return result.data;
 };
 
@@ -50,7 +50,15 @@ export const uploadGif = async (file) => {
   const result = await fetch('https://upload.giphy.com/v1/gifs', {
     method: 'POST',
     body: formData,
-  });
+  })
+
+  const response = await result.json()
+  console.log(response)
+  const gifId = response.data.id
+ 
+  // Save the GIF ID to local storage
+  localStorage.setItem("uploadedGifId", gifId);
+  console.log(`Uploaded GIF ID: ${gifId}`);
 
   if (!result.ok) {
     throw new Error(`Unexpected status code when uploading GIF: ${result.status}, ${await result.text()}`);
@@ -58,15 +66,12 @@ export const uploadGif = async (file) => {
   return result.ok;
 }
 
-export const loadRandomGif = async () => {
- const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`);
- const result = await response.json();
- return result.data;
-};
+export const getGifUploadedId = async () => {
+  // obtain the gif id from localStorage
+  const uploadedGifId = (localStorage.getItem("uploadedGifId")) || [];
+// removed JSON.stringify
+  const gifIdString = (uploadedGifId);
+  console.log(`gif id to string: ${gifIdString}`);
+  return gifIdString;
 
-export const loadGifDetailsById = async (gifId) => {
-  const response = await fetch(`https://api.giphy.com/v1/gifs/${gifId}?api_key=${API_KEY}&rating=g`);
-  const result = await response.json();
-console.log(result)
-  return result.data;
-};
+}
