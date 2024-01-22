@@ -40,6 +40,11 @@ export const loadSearchResults = async (searchInputValue) => {
 
   return result.data;
 };
+export const loadRandomGif = async () => {
+  const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`);
+  const result = await response.json();
+  return result.data;
+ };
 
 export const uploadGif = async (file) => {
   // creating FormData object to send key/value pairs via fetch() to a server
