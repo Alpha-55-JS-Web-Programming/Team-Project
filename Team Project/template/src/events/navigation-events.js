@@ -58,10 +58,16 @@ const renderHome = () => {
   q(CONTAINER_SELECTOR).innerHTML = toHomeView();
 };
 
-const renderFavorites = () => {
-  const favorites = getFavorites();
+const renderFavorites = async() => {
+  const favorites = await getFavorites();
   console.log("favorites from local storage: " + favorites);
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingItemView(favorites);
+  const gif = favorites.map(id =>  loadSingleGifById(id));
+  const gifs = await Promise.all(gif);
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
+};
+export const loadSingleGifById = async(id) => {
+  const gif =  await loadGifDetails(id);
+  return gif;
 };
 
 
@@ -94,7 +100,7 @@ export const displayUploadedGif = async () => {
   const getGifId = await getGifUploadedId();
   console.log(`Successfuly obtained gif\'s id: ${getGifId}`);
  
- //  return viewGifDetails(getGifId);
+  // return viewGifDetails(getGifId);
  
   const getGifData = await loadGifDetails(getGifId)
   console.log(`gif data.url: ${getGifData.url}`)
