@@ -15,3 +15,7 @@ export const removeFavorite = (GIFId) => {
 };
 
 export const getFavorites = () => [...favorites];
+
+export const getFavoriteGifId = () => localStorage.getItem('favoriteGifId');
+
+export const setFavoriteGifId = (gifId) => localStorage.setItem('favoriteGifId', gifId);

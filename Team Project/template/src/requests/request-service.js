@@ -1,4 +1,5 @@
 import { API_KEY } from "../common/constants.js";
+import { toTrendingView } from "../views/trending-view.js";
 
 /**
 *
@@ -56,3 +57,16 @@ export const uploadGif = async (file) => {
   }
   return result.ok;
 }
+
+export const loadRandomGif = async () => {
+ const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`);
+ const result = await response.json();
+ return result.data;
+};
+
+export const loadGifDetailsById = async (gifId) => {
+  const response = await fetch(`https://api.giphy.com/v1/gifs/${gifId}?api_key=${API_KEY}&rating=g`);
+  const result = await response.json();
+console.log(result)
+  return result.data;
+};

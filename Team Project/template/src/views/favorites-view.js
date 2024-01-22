@@ -1,10 +1,13 @@
-import { loadSingleGif } from "../requests/request-service.js";
+import { loadRandomGif } from "../requests/request-service.js";
+import { toTrendingItemView } from "./trending-view.js";
 
-export const toFavoritesView = (gifs) => `
-<div id="movies">
-  <h1>Favorite movies:</h1>
-  <div class="content">
-    ${gifs.find(loadSingleGif)|| '<p>Add some movies to favorites to see them here.</p>'}
-  </div>
-</div>
-`;
+export const toFavoritesView = async () => {
+  const favoriteGif = await loadRandomGif();
+  return `
+    <div id="gifs">
+      <h1>Favorite gifs:</h1>
+      <div class="content">
+        <img src="${favoriteGif}" alt="Random Gif">
+      </div>
+    </div>`;
+};

@@ -4,7 +4,7 @@ import { toAboutView } from '../views/about-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
-import { toTrendingView, toGifDetailsView } from '../views/trending-view.js';
+import { toTrendingView, toGifDetailsView, toTrendingItemView } from '../views/trending-view.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toUploadView } from '../views/upload-view.js';
 
@@ -60,8 +60,7 @@ const renderHome = () => {
 
 const renderFavorites = () => {
   const favorites = getFavorites();
-  Promise.all(favorites.map(id => loadSingleGif(id)))
-    .then(movies => q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(movies));
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingItemView(favorites);
 };
 
 
