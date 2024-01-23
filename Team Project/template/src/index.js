@@ -28,11 +28,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target.classList.contains("favorite")) {
       toggleFavoriteStatus(event.target.getAttribute("data-gif-id"));
     }
+
+    if (event.target.classList.contains("button-picture")) {
+      console.log('click');
+      console.log(document.getElementById("search"));
+      renderSearchItems(document.getElementById("search").value);
+    }
+
   });
 
   // search events
-  q("input#search").addEventListener("input", (event) => {
+  // q("input#search").addEventListener("input", (event) => {
+  //   renderSearchItems(event.target.value);
+  // });
+  q("input#search").addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
     renderSearchItems(event.target.value);
+    }
+
+
+
   });
 
   loadPage(HOME);

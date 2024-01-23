@@ -107,8 +107,6 @@ export const displayUploadedGif = async () => {
 
   const img = document.createElement("IMG");
   img.src = getGifData.images.fixed_width.url;
-  img.height = 200;
-  img.width = 200;
   img.className = 'uploaded-gif';
   document.getElementById('status').appendChild(img);
 };
