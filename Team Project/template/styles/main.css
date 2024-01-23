@@ -9,6 +9,7 @@ body {
 }
 .button-picture {
 height: 25px;
+margin-left: 0.5em;
 }
 .trending-gifs {
   display: grid;
