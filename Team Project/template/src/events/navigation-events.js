@@ -59,6 +59,12 @@ const renderHome = () => {
 
 
 const renderFavorites = async() => {
+
+  if (localStorage.getItem('favorites') === null) {
+    const random = loadRandomGif()
+    q(CONTAINER_SELECTOR).innerHTML = toTrendingView(random);
+  }
+  
   const favorites = getFavorites();
   console.log("favorites from local storage: " + favorites);
   const gif = favorites.map(id =>  loadSingleGifById(id));
