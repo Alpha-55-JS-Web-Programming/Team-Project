@@ -11,13 +11,13 @@ body {
 
 .trending-gifs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1.5em));
   grid-gap: 20px;
   justify-content: center;
 }
 
 .grid {
-  background-color: rgb(1, 1, 9);
+  background-color: rgb(0, 0, 0);
 }
 
 div#app {
@@ -86,27 +86,31 @@ a.active {
 }
 
 input#search {
-  font-size: 20px;
+  font-size: auto;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
   border: 1px solid gray;
   border-radius: 4px;
-  height: 24px;
+  height: 28px;
   flex: 1 0;
   margin: auto;
 }
 
 span.favorite {
-  padding-left: 10px;
+  padding-left: 15px;
   cursor: pointer;
+  color: #333; /* Dark gray color */
+  font-weight: bold; /* Make the text bold */
+  background-color: #bdcaee; /* Light gray background */
+  border-radius: 5px; /* Rounded corners */
+  padding: 5px 10px; /* Padding on all sides */
 }
-
 span.favorite.active {
   color: rgb(255, 0, 149);
 }
 
 span.favorite:hover {
-  color:rgb(187, 135, 255)
+  color:rgb(255, 0, 0)
 }
 
 /* End template styling */
@@ -145,5 +149,33 @@ span.favorite:hover {
   font-size: 25px;
 }
 
+button {
+  background-color: #5780f3; /* Green */
+  border: none;
+  color: rgb(254, 254, 254);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: #191ce0; /* Change to green when mouse hovers over it */
+}
 
-/* Add your styles below */
+.upload-input-file{
+  background-color: #5780f3; /* Green */
+  border: none;
+  color: rgb(254, 254, 254);
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 1em 2em;
+  cursor: pointer;
+  border-radius: 5px;
+}
