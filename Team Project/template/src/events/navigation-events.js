@@ -100,14 +100,14 @@ export const displayUploadedGif = async () => {
   const getGifId = await getGifUploadedId();
   console.log(`Successfuly obtained gif\'s id: ${getGifId}`);
 
-  return viewGifDetails(getGifId);
+  // return viewGifDetails(getGifId);
 
-  // const getGifData = await loadGifDetails(getGifId)
-  // console.log(`gif data.url: ${getGifData.url}`)
+  const getGifData = await loadGifDetails(getGifId)
+  console.log(`gif data.url: ${getGifData.url}`)
 
-  // const img = document.createElement("IMG");
-  // img.src = getGifData.images.fixed_width.url;
-  // img.height = 200;
-  // img.width = 200;
-  // document.getElementById('status').appendChild(img);
+  const img = document.createElement("IMG");
+  img.src = getGifData.images.fixed_width.url;
+  img.height = 200;
+  img.width = 200;
+  document.getElementById('status').appendChild(img);
 };
