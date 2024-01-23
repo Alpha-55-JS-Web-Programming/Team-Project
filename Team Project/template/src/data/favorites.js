@@ -1,21 +1,21 @@
-let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 export const addFavorite = (GiFId) => {
-  if (favorites.find(id => id === GiFId)) {
+  if (favorites.find((id) => id === GiFId)) {
     return;
   }
 
   favorites.push(GiFId);
-  localStorage.setItem('favorites', JSON.stringify(favorites));
+  localStorage.setItem("favorites", JSON.stringify(favorites));
 };
 
 export const removeFavorite = (GIFId) => {
-  favorites = favorites.filter(id => id !== GIFId);
-  localStorage.setItem('favorites', JSON.stringify(favorites));
+  favorites = favorites.filter((id) => id !== GIFId);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
 };
 
 export const getFavorites = () => [...favorites];
 
-export const getFavoriteGifId = () => localStorage.getItem('favoriteGifId');
+export const getFavoriteGifId = () => localStorage.getItem("favoriteGifId");
 
-export const setFavoriteGifId = (gifId) => localStorage.setItem('favoriteGifId', gifId);
+export const setFavoriteGifId = (gifId) => localStorage.setItem("favoriteGifId", gifId);

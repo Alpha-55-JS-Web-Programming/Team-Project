@@ -1,5 +1,5 @@
 export const toUploadView = () => {
-    return `
+  return `
     <div>
       <h2>Upload Images</h2>
     </div>
@@ -9,4 +9,4 @@ export const toUploadView = () => {
     </div>
     <div id="status"></div>
       `;
-  };
+};
