@@ -1,5 +1,24 @@
 import { renderFavoriteStatus } from "../events/favorites-events.js";
 
+/**
+ * Generates HTML markup for the detailed view of a single GIF item.
+ *
+ * @param {{
+*   title: string,
+*   images: {
+*     fixed_width: {
+*       url: string,
+*     },
+*   },
+*   rating: string,
+*   import_datetime: string,
+*   id: string,
+*   user?: {
+*     username: string,
+*   },
+* }} trendingItem - An object containing details about a trending GIF.
+* @returns {string} HTML string representing the detailed view of a GIF.
+*/
 export const toGifDetailsView = (trendingItem) => {
   return `
       <div class="gif-info">
@@ -41,6 +60,23 @@ export const toTrendingView = (trendingGifs) => {
     `;
 };
 
+/**
+ * Generates HTML markup for a single item in the trending view.
+ *
+ * @param {{
+*   id: string,
+*   title: string,
+*   images: {
+*     fixed_width?: {
+*       url: string,
+*     },
+*   },
+*   user?: {
+*     username: string,
+*   },
+* }} trendingItem - An object containing details about a single trending GIF.
+* @returns {string} HTML string representing a single item in the trending view.
+*/
 export const toTrendingItemView = (trendingItem) => {
   console.log(trendingItem);
   return `
