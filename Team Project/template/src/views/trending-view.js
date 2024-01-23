@@ -34,7 +34,6 @@ export const toGifDetailsView = (trendingItem) => {
 export const toTrendingView = (trendingGifs) => {
   return `
       <section class="trending">
-        <h2>Trending</h2>
         <div class="trending-gifs">
           ${trendingGifs.map(toTrendingItemView).join("")}
         </div>
