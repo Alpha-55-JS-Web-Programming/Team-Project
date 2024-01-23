@@ -4,8 +4,7 @@ import { toAboutView } from '../views/about-view.js';
 import { toHomeView } from '../views/home-view.js';
 import { q, setActiveNav } from './helpers.js';
 import { getFavorites } from '../data/favorites.js';
-import { toTrendingView, toGifDetailsView, toTrendingItemView } from '../views/trending-view.js';
-import { toFavoritesView } from '../views/favorites-view.js';
+import { toTrendingView, toGifDetailsView } from '../views/trending-view.js';
 import { toUploadView } from '../views/upload-view.js';
 
 export const loadPage = (page = '') => {
@@ -59,10 +58,16 @@ const renderHome = () => {
 };
 
 
-const renderFavorites = () => {
+const renderFavorites = async() => {
   const favorites = getFavorites();
   console.log("favorites from local storage: " + favorites);
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingItemView(favorites);
+  const gif = favorites.map(id =>  loadSingleGifById(id));
+  const gifs = await Promise.all(gif);
+  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
+};
+export const loadSingleGifById = async(id) => {
+  const gif =  await loadGifDetails(id);
+  return gif;
 };
 
 const renderAbout = () => {

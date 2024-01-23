@@ -1,8 +1,7 @@
-import { loadRandomGif } from "../requests/request-service.js";
-import { toTrendingItemView } from "./trending-view.js";
+import { loadSingleGifById } from "../events/navigation-events.js";
 
 export const toFavoritesView = async () => {
-  const favoriteGif = await loadRandomGif();
+  const favoriteGif = await loadSingleGifById();
   return `
     <div id="gifs">
       <h1>Favorite gifs:</h1>
