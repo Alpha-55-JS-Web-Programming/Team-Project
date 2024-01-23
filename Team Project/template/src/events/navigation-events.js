@@ -44,9 +44,7 @@ const renderUpload = () => {
 };
 
 export const viewGifDetails = async (gifId) => {
-  console.log(gifId);
   const gifDetails = await loadGifDetails(gifId);
-  console.log(gifDetails);
   q(CONTAINER_SELECTOR).innerHTML = toGifDetailsView(gifDetails);
 };
 
@@ -86,7 +84,6 @@ export const initiateUpload = async () => {
     try {
       document.getElementById("status").innerHTML = "The GIF is uploading...";
       await uploadGif(file);
-      console.log("Successful upload");
       document.getElementById("status").innerHTML = "Upload successful!";
       displayUploadedGif();
     } catch (e) {
@@ -98,7 +95,6 @@ export const initiateUpload = async () => {
 
 export const displayUploadedGif = async () => {
   const getGifId = await getGifUploadedId();
-  console.log(`Successfuly obtained gif\'s id: ${getGifId}`);
 
   // return viewGifDetails(getGifId);
 

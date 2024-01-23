@@ -29,7 +29,6 @@ export const loadSingleGif = () => {};
 export const loadGifDetails = async (gifId) => {
   const response = await fetch(`https://api.giphy.com/v1/gifs/${gifId}?api_key=${API_KEY}`);
   const result = await response.json();
-  console.log(`fetched gif with data: ${JSON.stringify(result.data)}`);
   return result.data;
 };
 
@@ -57,12 +56,10 @@ export const uploadGif = async (file) => {
   });
 
   const response = await result.json();
-  console.log(response);
   const gifId = response.data.id;
 
   // Save the GIF ID to local storage
   localStorage.setItem("uploadedGifId", gifId);
-  console.log(`Uploaded GIF ID: ${gifId}`);
 
   if (!result.ok) {
     throw new Error(
@@ -77,8 +74,5 @@ export const uploadGif = async (file) => {
 export const getGifUploadedId = async () => {
   // obtain the gif id from localStorage
   const uploadedGifId = localStorage.getItem("uploadedGifId") || [];
-  // removed JSON.stringify
-  const gifIdString = uploadedGifId;
-  console.log(`gif id to string: ${gifIdString}`);
-  return gifIdString;
+  return uploadedGifId;
 };

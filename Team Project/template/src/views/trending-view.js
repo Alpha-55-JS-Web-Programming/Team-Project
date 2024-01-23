@@ -81,7 +81,6 @@ export const toTrendingItemView = (trendingItem) => {
   console.log(trendingItem);
   return `
     <div class="grid">
-      <a href="#/trending/${trendingItem.id}">
         <img src="${trendingItem?.images?.fixed_width?.url}" alt="${trendingItem.title}">
         <button class="view-gif-details-button"  data-gif-id=${trendingItem.id} >View Gif Details</button>
         ${renderFavoriteStatus(trendingItem.id)}

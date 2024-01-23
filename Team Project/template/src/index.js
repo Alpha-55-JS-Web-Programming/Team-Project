@@ -1,9 +1,8 @@
 import { HOME } from "./common/constants.js";
 import { toggleFavoriteStatus } from "./events/favorites-events.js";
 import { q } from "./events/helpers.js";
-import { loadPage, viewGifDetails } from "./events/navigation-events.js"; // change
+import { loadPage, viewGifDetails, initiateUpload } from "./events/navigation-events.js";
 import { renderSearchItems } from "./events/search-events.js";
-import { initiateUpload } from "./events/navigation-events.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     // add global listener
@@ -13,13 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
             loadPage(event.target.getAttribute("data-page"));
         }
 
-        // show movie events
+        // show gif details
         if (event.target.classList.contains("view-gif-details-button")) {
             viewGifDetails(event.target.getAttribute("data-gif-id"));
         }
 
         // upload
-        // listening for click event from upload-view
         if (event.target.classList.contains("upload-btn")) {
             initiateUpload();
         }
@@ -29,18 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
             toggleFavoriteStatus(event.target.getAttribute("data-gif-id"));
         }
 
-        if (event.target.classList.contains("button-picture")) {
-            console.log('click');
-            console.log(document.getElementById("search"));
-            renderSearchItems(document.getElementById("search").value);
-        }
-
     });
 
     // search events
-    // q("input#search").addEventListener("input", (event) => {
-    //   renderSearchItems(event.target.value);
-    // });
     q("input#search").addEventListener("input", (event) => {
         renderSearchItems(event.target.value);
     });
