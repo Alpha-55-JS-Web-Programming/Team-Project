@@ -1,5 +1,10 @@
 import { loadSingleGifById } from "../events/navigation-events.js";
 
+
+/**
+ *
+ * @returns {Promise<string>} A promise that resolves to a string containing the HTML structure for displaying the favorite GIF.
+ */
 export const toFavoritesView = async () => {
   const favoriteGif = await loadSingleGifById();
   return `
