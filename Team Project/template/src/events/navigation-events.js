@@ -64,6 +64,7 @@ const renderFavorites = async () => {
   const gifs = await Promise.all(gif);
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
 };
+
 export const loadSingleGifById = async (id) => {
   const gif = await loadGifDetails(id);
   return gif;
