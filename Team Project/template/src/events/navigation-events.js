@@ -81,7 +81,7 @@ export const initiateUpload = async () => {
     try {
       document.getElementById("status").innerHTML = "The GIF is uploading...";
       await uploadGif(file);
-      document.getElementById("status").innerHTML = "Upload successful!";
+      document.getElementById("status").innerHTML = `<p>Upload successful!</p>`;
       displayUploadedGif();
     } catch (e) {
       console.error("Error:", e);
