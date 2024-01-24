@@ -24,8 +24,6 @@ export const loadTrendingGifs = async () => {
   return result.data;
 };
 
-export const loadSingleGif = () => {};
-
 /**
  *
  * @param {string} gifId - The unique identifier for the GIF.
@@ -107,9 +105,7 @@ export const loadRandomGif = async () => {
  * @throws {Error} Throws an error if the upload operation fails or the server responds with an unexpected status code.
  */
 export const uploadGif = async (file) => {
-  // creating FormData object to send key/value pairs via fetch() to a server
   const formData = new FormData();
-  // This appends the file to the FormData object with the key 'image'.
   formData.append("file", file);
   formData.append("api_key", API_KEY);
   const result = await fetch("https://upload.giphy.com/v1/gifs", {
@@ -120,7 +116,6 @@ export const uploadGif = async (file) => {
   const response = await result.json();
   const gifId = response.data.id;
 
-  // Save the GIF ID to local storage
   localStorage.setItem("uploadedGifId", gifId);
 
   if (!result.ok) {
@@ -139,7 +134,6 @@ export const uploadGif = async (file) => {
  * @returns {Promise<string>} A promise that resolves to the ID of the uploaded GIF as a string, or an empty array if no GIF ID is stored.
  */
 export const getGifUploadedId = async () => {
-  // obtain the gif id from localStorage
   const uploadedGifId = localStorage.getItem("uploadedGifId") || [];
 
   return uploadedGifId;

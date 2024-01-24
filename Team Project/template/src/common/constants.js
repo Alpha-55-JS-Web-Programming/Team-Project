@@ -1,10 +1,10 @@
 export const HOME = "home";
 
-export const TRENDING = "trending"; // new
+export const TRENDING = "trending";
 
 export const FAVORITES = "favorites";
 
-export const UPLOAD = "upload"; // new
+export const UPLOAD = "upload";
 
 export const FULL_HEART = "❤";
 

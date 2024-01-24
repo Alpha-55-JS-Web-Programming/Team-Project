@@ -60,7 +60,6 @@ const renderFavorites = async () => {
     return;
   }
 
-  console.log("favorites from local storage: " + favorites);
   const gif = favorites.map((id) => loadSingleGifById(id));
   const gifs = await Promise.all(gif);
   q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
@@ -75,9 +74,7 @@ const renderAbout = () => {
 };
 
 export const initiateUpload = async () => {
-  // getting the class attribute, because in index.js the current trigered event is the button
   const fileInput = document.getElementsByClassName("upload-input-file")[0];
-  // and getting the img file that is to be uploaded
   const file = fileInput.files[0];
 
   if (file) {
@@ -99,7 +96,6 @@ export const displayUploadedGif = async () => {
   // return viewGifDetails(getGifId);
 
   const getGifData = await loadGifDetails(getGifId)
-  console.log(`gif data.url: ${getGifData.url}`)
 
   const img = document.createElement("IMG");
   img.src = getGifData.images.fixed_width.url;

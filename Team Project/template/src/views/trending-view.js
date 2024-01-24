@@ -76,7 +76,6 @@ export const toTrendingView = (trendingGifs) => {
  * @returns {string} HTML string representing a single item in the trending view.
  */
 export const toTrendingItemView = (trendingItem) => {
-  console.log(trendingItem);
   return `
     <div class="grid">
         <img src="${trendingItem?.images?.fixed_width?.url}" alt="${trendingItem.title}">
