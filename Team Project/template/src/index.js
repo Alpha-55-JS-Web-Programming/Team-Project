@@ -1,7 +1,7 @@
 import { HOME } from "./common/constants.js";
 import { toggleFavoriteStatus } from "./events/favorites-events.js";
 import { q } from "./events/helpers.js";
-import { loadPage, viewGifDetails, initiateUpload } from "./events/navigation-events.js";
+import { loadPage, viewGifDetails, initiateUpload, handleScroll } from "./events/navigation-events.js";
 import { renderSearchItems } from "./events/search-events.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -36,3 +36,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadPage(HOME);
 });
+
+window.addEventListener('scroll', handleScroll());

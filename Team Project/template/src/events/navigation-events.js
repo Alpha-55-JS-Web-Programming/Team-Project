@@ -1,5 +1,5 @@
 import { ABOUT, CONTAINER_SELECTOR, FAVORITES, HOME, TRENDING, UPLOAD } from "../common/constants.js";
-import { loadTrendingGifs, loadGifDetails, uploadGif, getGifUploadedId, loadRandomGif} from "../requests/request-service.js";
+import { loadTrendingGifs, loadGifDetails, uploadGif, getGifUploadedId, loadRandomGif, loadInfiniteScroll} from "../requests/request-service.js";
 import { toAboutView } from "../views/about-view.js";
 import { toHomeView } from "../views/home-view.js";
 import { q, setActiveNav } from "./helpers.js";
@@ -103,3 +103,12 @@ export const displayUploadedGif = async () => {
   img.className = 'uploaded-gif';
   document.getElementById('status').appendChild(img);
 };
+
+export const handleScroll = async() => {
+  const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+  if (scrollTop + clientHeight >= scrollHeight - 10) {
+      console.log('At the bottom');
+      const fetchData = await loadInfiniteScroll();
+  }
+  q(CONTAINER_SELECTOR).innerHTML += toTrendingView(fetchData);
+}

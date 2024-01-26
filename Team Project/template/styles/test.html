@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+  box-sizing: border-box;
+}
+    body {
+        columns: 4;
+  column-gap: 16px;
+  @media (max-width: 1200px) {
+    columns: 3;
+  }
+  @media (max-width: 992px) {
+    columns: 2;
+  }
+    }
+
+    .gallery-item {
+      flex: 1 0 200px; /* Adjust the width as per your design */
+      margin: 8px;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    img {
+  width: 100%;
+  height: auto;
+}
+
+  </style>
+</head>
+<body>
+  <div class="gallery-item">
+    <img src="../images/dark-linen.png" alt="Image 1">
+  </div>
+
+  <div class="gallery-item">
+    <img src="../images/banner-bottom.png" alt="Image 2">
+  </div>
+  <div class="gallery-item">
+    <img src="../images/dark-linen.png" alt="Image 2">
+  </div>
+    <div class="gallery-item">
+    <img src="../images/GIPHY Logo 209px.png" alt="Image 2">
+  </div>
+  <div class="gallery-item">
+    <img src="../images/dark-linen.png" alt="Image 2">
+  </div>
+  <div class="gallery-item">
+    <img src="../images/dark-linen.png" alt="Image 2">
+  </div>
+    <div class="gallery-item">
+    <img src="../images/banner-bottom.png" alt="Image 2">
+  </div>
+    <div class="gallery-item">
+    <img src="../images/GIPHY Logo 209px.png" alt="Image 2">
+  </div>
+   
+
+  <!-- Add more gallery items with different-sized images -->
+
+</body>
+</html>

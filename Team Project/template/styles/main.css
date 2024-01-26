@@ -8,17 +8,66 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+button {
+  transition: transform 0.3s ease-in-out;
+}
+button:hover  {
+  transform: scale(1.1);
+}
+
+#content {
+  columns: 4;
+  column-gap: 16px;
+  @media (max-width: 1200px) {
+    columns: 3;
+  }
+  @media (max-width: 992px) {
+    columns: 2;};
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: sans-serif;
+}
 .trending-gifs {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1.5em));
   grid-gap: 20px;
-  justify-content: center;
+  justify-content: center; */
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  grid-auto-flow: column;
+  gap: 10px; */
+  columns: 5 200px;
+  column-gap: 1.5rem;
+  width: 90%;
+  margin: 0 auto;
+  
+    
 }
 
 .grid {
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 10);
+  gap: 10px;
+  /* background-color: rgb(0, 0, 0);
+  padding: 10px;
+  width: 200px;
+  height: 200px; 
+  block-size: fit-content; */
+  width: 150px;
+  margin: 0 1.5rem 1.5rem 0;
+  display: inline-block;
+  width: 100%;
+  border: solid 2px black;
+  padding: 5px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+  border-radius: 5px;
 }
-
+img { 
+  width: 100%; 
+  border-radius: 0 0 1rem 1rem;
+}
 div#app {
   display: grid;
   max-width: 1400px;

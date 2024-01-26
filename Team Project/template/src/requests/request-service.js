@@ -1,4 +1,4 @@
-import { API_KEY } from "../common/constants.js";
+import { API_KEY, getUrl } from "../common/constants.js";
 
 /**
  *
@@ -137,4 +137,11 @@ export const getGifUploadedId = async () => {
   const uploadedGifId = localStorage.getItem("uploadedGifId") || [];
 
   return uploadedGifId;
+};
+
+export const loadInfiniteScroll = async () => {
+  const response = await fetch(getUrl(30,0));
+  const result = await response.json();
+
+  return result.data;
 };
