@@ -6,6 +6,7 @@ import { q, setActiveNav } from "./helpers.js";
 import { getFavorites } from "../data/favorites.js";
 import { toTrendingView, toGifDetailsView } from "../views/trending-view.js";
 import { toUploadView } from "../views/upload-view.js";
+import { toFavoritesView } from "../views/favorites-view.js";
 
 export const loadPage = (page = "") => {
   switch (page) {
@@ -56,13 +57,13 @@ const renderFavorites = async () => {
   const favorites = getFavorites();
   if (favorites.length === 0) {
     const random = await loadRandomGif();
-    q(CONTAINER_SELECTOR).innerHTML = toTrendingView([random]);
+    q(CONTAINER_SELECTOR).innerHTML = toFavoritesView([random], false);
     return;
   }
 
   const gif = favorites.map((id) => loadSingleGifById(id));
   const gifs = await Promise.all(gif);
-  q(CONTAINER_SELECTOR).innerHTML = toTrendingView(gifs);
+  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(gifs, true);
 };
 
 export const loadSingleGifById = async (id) => {

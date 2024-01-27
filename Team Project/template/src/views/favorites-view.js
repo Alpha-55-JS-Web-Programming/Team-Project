@@ -1,17 +1,16 @@
-import { loadSingleGifById } from "../events/navigation-events.js";
-
+import { toTrendingItemView } from "./trending-view.js";
 
 /**
  *
  * @returns {Promise<string>} A promise that resolves to a string containing the HTML structure for displaying the favorite GIF.
  */
-export const toFavoritesView = () => {
-  const favoriteGif = loadSingleGifById();
+export const toFavoritesView = (trendingGifs, hasFavorites) => {
+
   return `
-    <div id="gifs">
-      <h1>Favorite gifs:</h1>
-      <div class="content">
-        <img src="${favoriteGif}" alt="Random Gif">
+    <section class="trending">
+      ${!hasFavorites ? "<b>No favorite GIFs have been added yet.</b>" : ""}
+      <div class="trending-gifs">
+        ${trendingGifs.map(toTrendingItemView).join("")}
       </div>
-    </div>`;
+    </section>`;
 };
