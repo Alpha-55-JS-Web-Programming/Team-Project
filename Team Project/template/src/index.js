@@ -32,11 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // search events
-    q("input#search").addEventListener("input", (event) => {
-        renderSearchItems(event.target.value);
+    q("input#search").addEventListener("keydown", (event) => {
+        if (event.keyCode === 13) {
+            renderSearchItems(event.target.value);
+        }
     });
 
     loadPage(HOME);
 });
 
-window.addEventListener('scroll', handleScroll );
+window.addEventListener('scroll', handleScroll);
