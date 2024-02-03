@@ -1,8 +1,9 @@
 // import { q } from '../common/helpers.js';
 // import { getUrl } from '../common/constants.js';
-import { toTrendingView } from '../views/trending-view.js';
+import { toTrendingView, toTrendingItemView} from '../views/trending-view.js';
 import { CONTAINER_SELECTOR } from '../common/constants.js';
 import { API_KEY } from '../common/constants.js';
+import { renderFavoriteStatus } from '../events/favorites-events.js';
 
 
 let offset = 0; 
@@ -17,6 +18,23 @@ export const handleScroll = async () => {
     console.log('At the bottom');
     const data = await loadInfiniteScroll();
     document.querySelector(CONTAINER_SELECTOR).innerHTML += toTrendingView(data);
+
+
+    // const lastImg = document.querySelector('.trending').lastElementChild;
+
+    // lastImg.appendChild(toTrendingView(data));
+
+    // lastImg.insertAdjacentHTML('afterend', data.map(toTrendingItemView).join(""));
+
+    // const imgElement = data.map((item) => {
+    //   const img = document.createElement('IMG');
+    //   img.src = item.images.fixed_width.url;
+    //   img.alt = item.title;
+    //   // lastImg.append(img);
+    //   lastImg.append(toTrendingItemView(item));
+    // }
+    // );
+
   }
 };
 
