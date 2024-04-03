@@ -3,8 +3,6 @@ import { toggleFavoriteStatus } from "./events/favorites-events.js";
 import { q } from "./events/helpers.js";
 import { loadPage, viewGifDetails, initiateUpload } from "./events/navigation-events.js";
 import { renderSearchItems } from "./events/search-events.js";
-import { handleScroll } from "./scroll/scroll.js";
-// import { handleScroll } from "./events/navigation-events.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     // add global listener
@@ -40,5 +38,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadPage(HOME);
 });
-
-// window.addEventListener('scroll', handleScroll);
