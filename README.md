@@ -35,41 +35,41 @@ npm start
 - **Home Page: Where Engagement Begins**
   <br />Giphy's home page presents a straightforward gif database app, inviting users to browse trending gifs, upload their own, manage favorites, and search by title—all in one place.
 
-<img src="./Team Project/template/images/about.png"/>
+<img src="./images/about.png"/>
 <br/>
 
 - **Trending Now on Giphy**
   <br />Discover the pulse of humor and creativity with Giphy's Trending page, where users can explore the hottest gifs currently setting trends.
 
- <img src="./Team Project/template/images/trending.png"/>
+ <img src="./images/trending.png"/>
  <br />
 
 - **Gif Details Unveiled**
   <br />Dive deeper into each gif with Giphy's detailed view, showcasing the gif's rating, import date, unique ID, and the uploader's username, offering users a closer look at the story behind every gif.
 
-<img src="./Team Project/template/images/trendingDetails.png"/>
+<img src="./images/trendingDetails.png"/>
 <br/>
 
 - **Upload Gif to Giphy**
   <br />Enabling creativity, this page allows users to upload gifs from their file system to Giphy. Upon successful upload, the gif becomes instantly visible on the page, ready for the world to see.
 
-<img src="./Team Project/template/images/uploadImg.png"/>
+<img src="./images/uploadImg.png"/>
 <br/>
 
 - **Favorites Collection**
   <br/>The Favorites page showcases gifs marked as favorites by users, curating a personalized gallery from the trending selection. This dedicated space within the app serves as a repository for users' top gif picks, easily accessible for enjoyment and sharing.
 
-<img src="./Team Project/template/images/favorites.png"/>
+<img src="./images/favorites.png"/>
 <br/>
 
 - **Gif Search Engine**
-  The app's search bar empowers users to discover gifs by entering keywords, mirroring the intuitive search experience found in image search engines. Relevant gifs related to the query swiftly populate, offering a tailored exploration of the gif database.
+  <br/>The app's search bar empowers users to discover gifs by entering keywords, mirroring the intuitive search experience found in image search engines. Relevant gifs related to the query swiftly populate, offering a tailored exploration of the gif database.
 
-<img src="./Team Project/template/images/search.png"/>
+<img src="./images/search.png"/>
 <br/>
 
 - **About the Project**
-  The "About" page offers a glimpse into the heart of the project, featuring the creative minds behind it and marking the project's inception. It's a nod to transparency, collaboration, and the journey of bringing Giphy to life.
+  <br/>The "About" page offers a glimpse into the heart of the project, featuring the creative minds behind it and marking the project's inception. It's a nod to transparency, collaboration, and the journey of bringing Giphy to life.
 
-<img src="./Team Project/template/images/about.png"/>
+<img src="./images/about.png"/>
 <br/>
