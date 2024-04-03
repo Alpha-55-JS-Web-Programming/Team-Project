@@ -172,7 +172,7 @@ span.favorite:hover {
 }
 
 #about div.content {
-  max-width: 500px;
+  max-width: auto;
   margin: 50px auto;
   font-size: 1.2em;
   text-align: center;
@@ -266,4 +266,14 @@ button:hover {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   margin: 30px;
+}
+
+
+#gif-img {
+  width: 20%;
+  border-radius: 8px;
+}
+
+#status{
+  width: 20%;
 }
